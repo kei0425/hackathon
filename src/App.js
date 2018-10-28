@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { Route, Link } from "react-router-dom";
 
 import { Header, Container } from 'components/StyledComponents';
-import List from 'components/List';
+import TopPage from 'components/TopPage';
+import StorePage from 'components/StorePage';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      apiData: true,
-    };
-  }
-
-  searchAPI = term => {
-    // ぐるなび検索
   }
 
   fetchComment = id => {
@@ -33,10 +29,11 @@ class App extends Component {
     return (
       <div>
         <Header>
-          <h1>sample</h1>
+          <Link to={'/'}>home</Link>
         </Header>
         <Container>
-          <List list={[1,2,3]} />
+          <Route exact path={'/'} component={TopPage} />
+          <Route exact path={'/store/:id'} component={StorePage} />
         </Container>
       </div>
     );
