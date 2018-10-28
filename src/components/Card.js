@@ -4,7 +4,6 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
 
 export default ({data}) =>{
-  console.log(data);
   return (
     <Link to={`store/${data.id}`} >
       <Card>

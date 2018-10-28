@@ -1,7 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
+import Logo from 'assets/logo.png';
 
 import { Header, Container } from 'components/StyledComponents';
+import StoreInfo from 'components/StoreInfo';
+import CommentForm from 'components/CommentForm';
 
 class StorePage extends Component {
   constructor(props) {
@@ -31,8 +35,15 @@ class StorePage extends Component {
     const { store } = this.state;
     return (
       <Fragment>
-        {store.name}
-        {store.address}
+        <Header>
+          <div><Link to={'/'}><img src={Logo} style={{width:'240px'}}/></Link></div>
+        </Header>
+        <StoreInfo
+          data={store}
+        />
+        <CommentForm
+          data={store}
+        />
       </Fragment>
     );
   }

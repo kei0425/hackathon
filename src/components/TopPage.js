@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
+import Logo from 'assets/logo.png';
 
 import { Input } from 'semantic-ui-react';
 import styled from 'styled-components';
@@ -43,6 +45,9 @@ class TopPage extends Component {
   render() {
     return (
       <Fragment>
+        <Header>
+          <div style={{textAlign:'center'}}><Link to={'/'}><img src={Logo}/></Link></div>
+        </Header>
         <SearchWrapper>
           <Input value={this.state.term} placeholder='Search...' onChange={this.handleChange} />
         </SearchWrapper>

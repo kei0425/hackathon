@@ -3,7 +3,7 @@ import { Colors } from 'variables';
 import { media } from 'helpers/media-query';
 
 export const Header = styled.div`
-  padding: 16px;
+  padding: 16px 0;
 `;
 export const Container = styled.div`
   padding: 16px;
