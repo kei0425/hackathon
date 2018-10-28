@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Route, Link } from "react-router-dom";
 
-import { Header, MainContainer } from 'components/StyledComponents';
+import { Header, Container } from 'components/StyledComponents';
+import TopPage from 'components/TopPage';
+import StorePage from 'components/StorePage';
 
 class App extends Component {
   constructor(props) {
@@ -52,30 +55,20 @@ class App extends Component {
 
   // cid: コメントID
   // like: 1:like /-1: unlike
-  changeReview = review(cid, like) => {
+  changeReview = (cid, like) => {
     const docRef = this.collection.doc(cid);
-    if (doc.exists) {
-        console.log("Document data:", doc.data());
-    } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-    }
-})
-    if (like > 0) {
-      this.collection.update()
-    }
-    
-    // いいね/悪いね
   }
 
   render() {
     return (
-      <div className="App">
-        <Header className="App-header">
-          <h1 className="App-title">sample</h1>
+      <div>
+        <Header>
+          <Link to={'/'}>home</Link>
         </Header>
-        <MainContainer>
-        </MainContainer>
+        <Container>
+          <Route exact path={'/'} component={TopPage} />
+          <Route exact path={'/store/:id'} component={StorePage} />
+        </Container>
       </div>
     );
   }
