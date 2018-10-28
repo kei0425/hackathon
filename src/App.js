@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import { Header, MainContainer } from 'components/StyledComponents';
+import { Header, Container } from 'components/StyledComponents';
+import List from 'components/List';
 
 class App extends Component {
   constructor(props) {
@@ -9,10 +10,6 @@ class App extends Component {
     this.state = {
       apiData: true,
     };
-  }
-
-  fetchAPI = () => {
-    // ぐるなびのデータ取得
   }
 
   searchAPI = term => {
@@ -34,12 +31,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header className="App-header">
-          <h1 className="App-title">sample</h1>
+      <div>
+        <Header>
+          <h1>sample</h1>
         </Header>
-        <MainContainer>
-        </MainContainer>
+        <Container>
+          <List list={[1,2,3]} />
+        </Container>
       </div>
     );
   }
