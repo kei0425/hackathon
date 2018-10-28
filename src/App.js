@@ -35,10 +35,15 @@ class App extends Component {
       }});
   }
 
-  fetchComment = id => {
-    // コメント・いいねデータ取得
-    
-  }
+  // コメント・いいねデータ取得
+  fetchComment = id => this.collection.where('id', '==', id)
+    .get()
+    .then(qs=>{
+      let result = [];
+      qs.forEach(d => result.push(
+        Object.assign({cid:d.id}, d.data())));
+      return result;
+    });
 
   // コメント投稿
   // いいね セット
@@ -55,9 +60,19 @@ class App extends Component {
 
   // cid: コメントID
   // like: 1:like /-1: unlike
-  changeReview = (cid, like) => {
-    const docRef = this.collection.doc(cid);
-  }
+  changeReview = (cid, like) => this.collection.doc(cid).get().then(function(doc) {
+    if (!doc.exists) {
+      throw `No such document! ${cid}`;
+    }
+    let d = doc.data();
+    
+    if (like > 0) {
+      return doc.update({like: d.like + like});
+    }
+    else {
+      return doc.update({like: d.unlike - like});
+    }
+  });
 
   render() {
     return (
