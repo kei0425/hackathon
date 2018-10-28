@@ -44,7 +44,21 @@ class App extends Component {
         Object.assign({cid:d.id}, d.data())));
       return result;
     });
-
+    
+  // タグいいねサマリ取得
+  fetchCommentSummary = id => this.fetchComment(id).then(
+    comments => comments.reduce((a,c) => {
+    	let d = a[c.tag];
+    	if (!d) {
+    		d = {count:0, like: 0, unlike: 0};
+    		a[c.tag] = d;
+        }
+    	d.count++;
+    	d.like += c.like;
+    	d.unlike += c.unlike;
+    	return a;
+    }, {}));
+    
   // コメント投稿
   // いいね セット
   // id: ぐるなび店舗ID
