@@ -10,20 +10,6 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      apiData: true,
-    };
-    var config = {
-      apiKey: "AIzaSyAUs6cS3bkcSFvO9ZFElNrcHqHiBS2DvDM",
-      authDomain: "hackathon-7f2d1.firebaseapp.com",
-      databaseURL: "https://hackathon-7f2d1.firebaseio.com",
-      projectId: "hackathon-7f2d1",
-      storageBucket: "hackathon-7f2d1.appspot.com",
-      messagingSenderId: "983159093875"
-    };
-    firebase.initializeApp(config);
-    
-    this.collection = firebase.firestore().collection('hackathon');
   }
 
   fetchAPI = (freeword) => {
@@ -88,12 +74,10 @@ class App extends Component {
     }
   });
 
+
   render() {
     return (
       <div>
-        <Header>
-          <Link to={'/'}>home</Link>
-        </Header>
         <Container>
           <Route exact path={'/'} component={TopPage} />
           <Route exact path={'/store/:id'} component={StorePage} />
