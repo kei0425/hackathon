@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import { Header, MainContainer } from 'components/StyledComponents';
 
@@ -11,8 +12,13 @@ class App extends Component {
     };
   }
 
-  fetchAPI = () => {
+  fetchAPI = (freeword) => {
     // ぐるなびのデータ取得
+    return axios.get("https://api.gnavi.co.jp/RestSearchAPI/v3/", {
+      params: {
+        keyid: '99d6d6feb358f45acfb8744c35494276',
+        freeword: freeword
+      }});
   }
 
   searchAPI = term => {
